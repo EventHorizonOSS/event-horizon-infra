@@ -6,7 +6,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "event-horizon-bucket"
+    bucket = "eh-sa-east-1-bucket"
     key    = "terraform/terraform.tfstate"
     region = "sa-east-1"
   }
@@ -17,6 +17,7 @@ terraform {
 // ============================================================================================== //
 
 resource "aws_vpc" "eh-sa-east-1-vpc" {
+  assign_generated_ipv6_cidr_block = false
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
